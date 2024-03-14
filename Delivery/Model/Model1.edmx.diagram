@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="998307ea6d90498a9599caa3d8732c7a" Name="Diagram1">
+        <EntityTypeShape EntityType="CourierDBModel.BankCard" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourierDBModel.Category" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourierDBModel.Client" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourierDBModel.Order" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourierDBModel.OrderProduct" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourierDBModel.Point" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourierDBModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourierDBModel.Provider" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourierDBModel.Role" Width="1.5" PointX="2.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourierDBModel.Status" Width="1.5" PointX="0.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourierDBModel.Unit" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourierDBModel.User" Width="1.5" PointX="5" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="CourierDBModel.FK_BankCard_Client1" ManuallyRouted="false" />
+        <AssociationConnector Association="CourierDBModel.FK_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="CourierDBModel.FK_Order_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="CourierDBModel.FK_Order_Point" ManuallyRouted="false" />
+        <AssociationConnector Association="CourierDBModel.FK_Order_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="CourierDBModel.FK_OrderProduct_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="CourierDBModel.FK_OrderProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="CourierDBModel.FK_Product_Provider" ManuallyRouted="false" />
+        <AssociationConnector Association="CourierDBModel.FK_Product_Unit" ManuallyRouted="false" />
+        <AssociationConnector Association="CourierDBModel.FK_User_Role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

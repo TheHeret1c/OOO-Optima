@@ -1,0 +1,64 @@
+﻿<Window x:Class="Delivery.View.ViewAddProduct"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Delivery.View"
+        mc:Ignorable="d"
+        Title="ViewAddProduct" Height="550" Width="500" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#D1F0B1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="/Resources/dostavka.png"/>
+
+            <TextBlock Grid.Column="1" x:Name="tbHeader" Text="Добавление товара" Style="{StaticResource HeaderTextStyle}"/>
+
+            <Button x:Name="btnBack" Grid.Column="2" Content="Назад" Style="{StaticResource PrimaryButtonStyle}"
+                    Click="btnBack_Click"/>
+        </Grid>
+
+        <UniformGrid Grid.Row="1" Columns="2">
+            <TextBlock Text="Наименование товара" Style="{StaticResource TextBlockTextStyle}"/>
+            <TextBox x:Name="tbName" Style="{StaticResource TextBoxTextStyle}" Width="200"/>
+
+            <TextBlock Text="Единицы измерения" Style="{StaticResource TextBlockTextStyle}"/>
+            <ComboBox x:Name="cbUnit" Style="{StaticResource ComboBoxStyle}" Width="200"/>
+
+            <TextBlock Text="Стоимость товара" Style="{StaticResource TextBlockTextStyle}"/>
+            <TextBox x:Name="tbCost" Style="{StaticResource TextBoxTextStyle}" Width="200"/>
+
+            <TextBlock Text="Скидка" Style="{StaticResource TextBlockTextStyle}"/>
+            <TextBox x:Name="tbDiscount" Style="{StaticResource TextBoxTextStyle}" Width="200"/>
+
+            <TextBlock Text="Категория товара" Style="{StaticResource TextBlockTextStyle}"/>
+            <ComboBox x:Name="cbCategory" Style="{StaticResource ComboBoxStyle}" Width="200"/>
+
+            <TextBlock Text="Описание товара" Style="{StaticResource TextBlockTextStyle}"/>
+            <TextBox x:Name="tbDescription" Style="{StaticResource TextBoxTextStyle}" Width="200"/>
+
+            <TextBlock Text="Продавец товара" Style="{StaticResource TextBlockTextStyle}"/>
+            <ComboBox x:Name="cbProvider" Style="{StaticResource ComboBoxStyle}" Width="200"/>
+
+            <TextBlock Text="Изображение товара" Style="{StaticResource TextBlockTextStyle}"/>
+            <Button x:Name="btnOpenDialog" Content="Выбрать" Click="btnOpenDialog_Click"
+                    Style="{StaticResource PrimaryButtonStyle}"/>
+        </UniformGrid>
+
+        <Grid Grid.Row="2">
+
+            <Button x:Name="btnApply" Grid.Column="1" Content="Подтвердить"
+                    Style="{StaticResource PrimaryButtonStyle}" Click="btnApply_Click"/>
+        </Grid>
+    </Grid>
+</Window>

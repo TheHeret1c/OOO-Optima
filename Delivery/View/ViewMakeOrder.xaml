@@ -1,0 +1,104 @@
+﻿<Window x:Class="Delivery.View.ViewMakeOrder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Delivery.View"
+        mc:Ignorable="d"
+        Title="ViewMakeOrder" Height="450" Width="900" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#D1F0B1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="/Resources/dostavka.png"/>
+
+            <TextBlock Grid.Column="1" Text="Заказ" Style="{StaticResource HeaderTextStyle}"/>
+
+            <Button x:Name="btnBack" Grid.Column="2" Content="Назад" Style="{StaticResource PrimaryButtonStyle}"
+                    Click="btnBack_Click"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ListBox x:Name="lbOrder" Margin="10" >
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding Path= ProductImage}" Width="100" Height="100" Stretch="Uniform"/>
+                            <StackPanel Orientation="Vertical" Margin="10, 0, 0, 0">
+                                <TextBlock Text="{Binding Path= ProductArticle}" Visibility="Collapsed"/>
+                                <TextBlock Text="{Binding Path= ProductName}" Style="{StaticResource Title}"/>
+                                <TextBlock Text="{Binding Path= Provider.ProviderName, StringFormat=Продавец: {0}}" Style="{StaticResource Label}"/>
+                                <TextBlock Text="{Binding Path= ProductCost, StringFormat=Цена: {0} руб.}" Style="{StaticResource Label}"/>
+                                <TextBlock Text="{Binding Path= ProductDiscount, StringFormat=Скидка: {0} %}" Style="{StaticResource Label}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="25, 0, 0, 0">
+                                <TextBlock Text="{Binding Path= ProductCount, StringFormat=Кол-во: {0}}" VerticalAlignment="Center" Style="{StaticResource Label}"/>
+                                <StackPanel Orientation="Vertical" Margin="25, 0, 0, 0">
+                                    <Button x:Name="btnAdd" Content="+" Style="{StaticResource PrimaryButtonStyle}"
+                                            Click="btnAdd_Click" Height="40" Width="40" VerticalAlignment="Center"/>
+                                    <Button x:Name="btnSub" Content="-" Style="{StaticResource PrimaryButtonStyle}"
+                                            Click="btnSub_Click" Height="40" Width="40" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <Button x:Name="btnDelete" Content="Удалить" Style="{StaticResource PrimaryButtonStyle}"
+                                        Click="btnDelete_Click" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Описание заказа" HorizontalAlignment="Center"
+                           Style="{StaticResource Title}" Margin="0, 5, 0, 0"/>
+                <TextBlock x:Name="tbCountPozInOrder" Style="{StaticResource Label}"
+                           Margin="0, 5, 0, 0" Text="Количество позиций в заказе: "/>
+                <TextBlock x:Name="tbCoundProductsInOrder" Style="{StaticResource Label}"
+                           Margin="0, 10, 0, 0" Text="Количество товаров в заказе: "/>
+                <TextBlock x:Name="tbAmountOrder" Style="{StaticResource Label}"
+                           Margin="0, 10, 0, 0" Text="Общая сумма за весь товар"/>
+                <TextBlock x:Name="tbAmountDiscount" Style="{StaticResource Label}"
+                           Margin="0, 10, 0, 0" Text="Общая сумма скидки: "/>
+                <TextBlock x:Name="tbAmountWitnDiscount" Style="{StaticResource Label}"
+                           Margin="0, 10, 0, 0" Text="Общая сумма заказа со скидкой: "/>
+
+                <TextBlock Text="Адрес" Style="{StaticResource Label}"
+                           HorizontalAlignment="Center" Margin="0, 5, 0, 0"/>
+
+                <ComboBox x:Name="cbPoint" Style="{StaticResource ComboBoxStyle}" Width="250"
+                          Margin="0, 5, 0, 0" Height="30"/>
+
+                <TextBlock Text="Карта" Style="{StaticResource Label}"
+                           HorizontalAlignment="Center" Margin="0, 5, 0, 0"/>
+                <ComboBox x:Name="cbCard" Style="{StaticResource ComboBoxStyle}" Width="250"
+                          Margin="0, 5, 0, 0" Height="30"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btnMakeOrder" Grid.Column="1" Content="Подтвердить заказ"
+                    Style="{StaticResource PrimaryButtonStyle}" Click="btnMakeOrder_Click"/>
+        </Grid>
+    </Grid>
+</Window>

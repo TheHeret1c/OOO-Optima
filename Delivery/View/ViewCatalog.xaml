@@ -1,0 +1,118 @@
+﻿<Window x:Class="Delivery.View.ViewCatalog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Delivery.View"
+        mc:Ignorable="d"
+        Title="ViewCatalog" Height="450" Width="850" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#D1F0B1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="/Resources/dostavka.png"/>
+
+            <TextBlock Grid.Column="1" Text="Каталог" Style="{StaticResource HeaderTextStyle}"/>
+
+            <Button x:Name="btnBack" Grid.Column="2" Content="Назад" Style="{StaticResource PrimaryButtonStyle}"
+                    Click="btnBack_Click"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ListBox x:Name="lbProducts" Margin="10" >
+                <ListBox.ContextMenu>
+                    <ContextMenu x:Name="cmAddInOrder">
+                        <MenuItem x:Name="miAddInOrder" Header="Добавить в корзину" Click="miAddInOrder_Click"/>
+                        <MenuItem x:Name="miEditProduct" Header="Редактировать продукт" Click="miEditProduct_Click"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding Path= ProductImagePath}" Width="100" Height="100" Stretch="Uniform"/>
+                            <StackPanel Orientation="Vertical" Margin="10, 0, 0, 0">
+                                <TextBlock Text="{Binding Path = ProductArticle}" Visibility="Collapsed"/>
+                                <TextBlock Text="{Binding Path= ProductName}" Style="{StaticResource Title}"/>
+                                <TextBlock Text="{Binding Path= ProductDescription}" Style="{StaticResource Label}"/>
+                                <TextBlock Text="{Binding Path= Provider.ProviderName, StringFormat=Продавец: {0}}" Style="{StaticResource Label}"/>
+                                <TextBlock Text="{Binding Path= ProductCost, StringFormat=Цена: {0} руб.}" Style="{StaticResource Label}" TextDecorations="Strikethrough"/>
+                                <TextBlock Text="{Binding Path= ProductDiscount, StringFormat=Скидка: {0} %}" Style="{StaticResource Label}"/>
+                                <TextBlock Text="{Binding Path= ProductCostWithDiscount, StringFormat=Цена со скидкой: {0} руб.}" Style="{StaticResource Label}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <StackPanel Grid.Column="1">
+                <TextBlock x:Name="tbCount" Margin="0, 10, 0, 0" Text="Количество"
+                           Style="{StaticResource Label}"/>
+                
+                <TextBlock Text="Фильтрация по стоимости" Style="{StaticResource Label}"
+                           Margin="0, 5, 0, 5"/>
+                <ComboBox x:Name="cbSortCost" Width="200" Height="30"
+                          Style="{StaticResource Label}" SelectionChanged="cbSortCost_SelectionChanged">
+                    <ComboBoxItem Content="По возрастанию"/>
+                    <ComboBoxItem Content="По убыванию"/>
+                </ComboBox>
+
+                <TextBlock Text="Фильтрация по скидке" Style="{StaticResource Label}"
+                           Margin="0, 5, 0, 5"/>
+                <ComboBox x:Name="cbSortDiscount" Width="200" Height="30"
+                          Style="{StaticResource Label}" SelectionChanged="cbSortDiscount_SelectionChanged">
+                    <ComboBoxItem Content="Все диапазоны"/>
+                    <ComboBoxItem Content="0-10%"/>
+                    <ComboBoxItem Content="11-14%"/>
+                    <ComboBoxItem Content="15+%"/>
+                </ComboBox>
+                
+                <TextBlock Text="Фильтрация по категории" Style="{StaticResource Label}"
+                           Margin="0, 5, 0, 5"/>
+                <ComboBox x:Name="cbSortCategory" Width="200" Height="30"
+                          Style="{StaticResource Label}" SelectionChanged="cbSortCategory_SelectionChanged"/>
+
+                <TextBox x:Name="tbSearch" Width="200" Height="30"
+                         Style="{StaticResource TextBoxTextStyle}" Margin="0, 10, 0, 0"
+                         TextChanged="tbSearch_TextChanged"/>
+
+                <Button x:Name="btnViewOrder" Content="Оформить заказ" Margin="0, 10, 0, 0" 
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Click="btnViewOrder_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btnEditOrder" Content="Работа с заказами"
+                    Style="{StaticResource PrimaryButtonStyle}"/>
+
+            <Button x:Name="btnAddProduct" Grid.Column="1" Content="Добавить продукт"
+                    Style="{StaticResource PrimaryButtonStyle}" Click="btnAddProduct_Click"/>
+
+            <Button x:Name="btnDeleteProduct" Grid.Column="2" Content="Удалить продукт"
+                    Style="{StaticResource PrimaryButtonStyle}" Click="btnDeleteProduct_Click"/>
+        </Grid>
+
+    </Grid>
+</Window>
